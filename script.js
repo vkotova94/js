@@ -1,28 +1,20 @@
 
 
-function isThereACat(animals) {
-    animals = animals.toLowerCase().indexOf("cat");
-    if (animals !== -1) {
-        console.log('true')
-    } else {
-        console.log('false')
-    }
+let arr = [100, 5, -2, -10000, 0, 53];
+
+arr.sort(function (a, b) {
+    return b - a;
+});
+
+console.log(arr);
+
+
+let oldArray = ["HTML", "Javascrip", "CSS"];
+let newArray = oldArray.slice();
+function independentSort() {
+    oldArray.sort();
+    newArray.reverse();
 }
-isThereACat('dog,zebra,Cat,frog');
-isThereACat('dog,zebra,frog');
-
-
-
- function isPythagoreanTheorem(a, b, c) {
-     var result;
-     a = parseInt(a);
-     b = parseInt(b);
-     result = Math.sqrt(a*a + b*b);
-     if (c == result) {
-        console.log ('true')
-    } else {
-        console.log('false')
-    }
- }
- isPythagoreanTheorem(6, 8, 10);
- isPythagoreanTheorem(2, 8, 6);
+independentSort()
+alert(oldArray);
+alert(newArray);
