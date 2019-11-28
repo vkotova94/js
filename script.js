@@ -1,20 +1,28 @@
-
-
-let arr = [100, 5, -2, -10000, 0, 53];
-
-arr.sort(function (a, b) {
-    return b - a;
-});
-
-console.log(arr);
-
-
-let oldArray = ["HTML", "Javascrip", "CSS"];
-let newArray = oldArray.slice();
-function independentSort() {
-    oldArray.sort();
-    newArray.reverse();
+let salaries = {
+  "John": 100,
+  "Pete": 300,
+  "Mary": 250
+};
+function sumSalaries(salaries) {
+    let sum = 0;
+    for (let salary of Object.values(salaries)) {
+        sum += salary;
+    }
+    return sum;
 }
-independentSort()
-alert(oldArray);
-alert(newArray);
+console.log(sumSalaries(salaries));
+
+function topSalary(salaries) {
+    let zp = 0,
+        output
+
+    for (let salary of Object.entries(salaries)) {
+        if (zp < salary[1]) {
+            zp = salary[1];
+            output = salary
+        }
+    }
+
+    return output;
+}
+console.log(topSalary(salaries));
