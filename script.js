@@ -1,85 +1,31 @@
-Array.prototype.max = function() {
-    let max;
+var storedName = localStorage.getItem('name');
+var storedPw = localStorage.getItem('pw');
 
-    this.forEach(number => {
-        if (typeof max == "undefined") {
-            max = number;
-        }
+function store() {
+    let name = document.getElementById('name').value
+    let password = document.getElementById('pw').value
 
-        if (number > max) {
-            max = number;
-        }
-    })
-    return max;
+    if (!storedName && !storedPw) {
+        localStorage.setItem('name', name)
+        localStorage.setItem('pw', password)
+        hideForm()
+        showMessage('Вы успешно зарегистрировались')
+    } else if (storedName == name && storedPw == password) {
+        hideForm()
+        showMessage('Вы успешно вошли в систему')
+    } else if (storedName != name || storedPw != password) {
+        hideForm()
+        showMessage('Логин или пароль введены неверно')
+    }
+
+    return false;
 }
 
-// console.log([0, 1, 2, 3, 50, 100].max());
-let user = {
-    name: 'Вася',
-
-    loginOk() {
-        alert(`${this.name} logged in`);
-    },
-
-    loginFail() {
-        alert(`${this.name} failed to log in`);
-    }
-};
-
-function askPassword(ok, fail) {
-    let password = prompt("Password?", 'rockstar');
-
-    if (password == "rockstar") {
-        return ok();
-    } else {
-        return fail();
-    }
+function showMessage(message) {
+    document.getElementById('message').textContent = message
+    document.getElementById('message').style.display = 'block'
 }
 
-// askPassword(user.loginOk.bind(user), user.loginFail.bind(user));
-
-class Animal {
-    constructor(name) {
-        this.name = name
-    }
-
-    greeting() {
-        console.log(`Hello, I am ${this.name} and I am an animal`);
-    }
+function hideForm() {
+    document.getElementById('register').style.display = 'none'
 }
-
-class Cat extends Animal {
-    constructor(name) {
-        super()
-        this.name = name
-    }
-
-    sayMeow() {
-        console.log("I have 4 paws");
-    }
-}
-
-class Dog extends Animal {
-    constructor(name) {
-        super()
-        this.name = name
-    }
-
-    voice() {
-        console.log('Bark');
-    }
-}
-
-let animal = new Animal('Zebra');
-// animal.name // ‘Zebra’
-animal.greeting() // ‘Hello, I am Zebra and I am an animal’;
-
-let cat = new Cat('Hacker');
-cat.sayMeow(); // ‘I have 4 paws’;
-// cat.name // ‘Hacker’
-cat.greeting() // ‘Hello, I am Hacker and I am an animal’;
-
-let dog= new Dog('Rax');
-dog.voice(); // ‘Bark!’;
-// dog.name // ‘Rax’
-dog.greeting() // ‘Hello, I am Rax and I am an animal’;

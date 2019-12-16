@@ -3,11 +3,21 @@
     <head>
         <meta charset="utf-8">
         <title></title>
+        <link rel="stylesheet" href="./css/style.css">
     </head>
     <body>
-    <script src="script.js">
+        <div class="form__inner">
+            <form id="register">
+                <label for="uname"><b>Username</b></label>
+                <input id="name" type="text" placeholder="Enter Username">
+                <label for="psw"><b>Password</b></label>
+                <input id="pw" type="password" placeholder="Enter Password">
+                <button id="rgstr_btn" onClick="return store();">Login</button>
+            </form>
+            <div id="message"></div>
+        </div>
 
-    </script>
+    <script src="script.js"></script>
 
     </body>
 </html>
